@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Factorial Calculator</title>
+</head>
+<body bgcolor=" #d1f2eb ">
+<h1>Calculate the Factorial of a Number</h1>
+<label for="number">Enter a positive integer:</label><br/><br/>
+<input type="number" id="number"><br/><br/>
+<button onclick="calculateFactorial()">Calculate Factorial</button>
+<div id="factorialResult"></div>
+<script>
+function calculateFactorial() {
+// Get the input value
+const number = parseInt(document.getElementById('number').value);
+// Initialize the message variable
+let message;
+// Check if the number is negative
+if (number < 0) {
+message = 'Error! Factorial for negative number does not exist.';
+}
+// Check if the number is 0
+else if (number === 0) {
+message = `The factorial of ${number} is 1.`;
+}
+// If the number is positive
+else {
+let fact = 1;
+for (let i = 1; i <= number; i++) {
+fact *= i;
+}
+message = `The factorial of ${number} is ${fact}.`;
+}
+// Display the result
+document.getElementById('factorialResult').innerHTML = `<h3>${message}</h3>`;
+}
+</script>
+</body>
+</html>

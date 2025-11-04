@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arithmetic Operations</title>
+</head>
+<body bgcolor= #d7bde2>
+<h1>Arithmetic Operations</h1>
+<label for="num1">Enter the first number:</label><br/><br/>
+<input type="number" id="num1"><br/><br/>
+<label for="num2">Enter the second number:</label><br/><br/>
+<input type="number" id="num2"><br/><br/>
+<button onclick="performOperations()">Perform Operations</button>
+<div id="results"></div>
+<script>
+   function performOperations()
+{
+var num1 = parseFloat(document.getElementById('num1').value);
+var num2 = parseFloat(document.getElementById('num2').value);
+var addition = num1 + num2;
+var subtraction = num1 - num2;
+var multiplication = num1 * num2;
+var division = num1 / num2;
+var modulo = num1 % num2;
+var results = document.getElementById('results');
+results.innerHTML = "<h3>Arithmetic Operations Results:</h3>" +
+"<p>Addition: " + num1 + " + " + num2 + " = " + addition + "</p>" +
+"<p>Subtraction: " + num1 + " - " + num2 + " = " + subtraction + "</p>" +
+"<p>Multiplication: " + num1 + " * " + num2 + " = " + multiplication + "</p>" +
+"<p>Division: " + num1 + " / " + num2 + " = " + division + "</p>" +
+"<p>Modulo: " + num1 + " % " + num2 + " = " + modulo + "</p>";
+}
+</script>
+</body>
+</html> 

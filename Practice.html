@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Caesar Cipher</title>
+</head>
+<body bgcolor=Unbleached Silk>
+<h1>Caesar Cipher</h1>
+<label for="inputText">Enter Text:</label>
+<input type="text" id="inputText"><br/><br/>
+<label for="shiftValue">Enter Shift Value:</label>
+<input type="number" id="shiftValue"><br/><br/>
+<button onclick="encryptText()">Encrypt</button>
+<p id="result"></p>
+<script>
+function caesarCipher(text, shift)
+{
+let result = "";
+for (let i = 0; i < text.length; i++)
+{
+let char = text.charAt(i);
+if (char.match(/[a-z]/i))
+{
+let isUpperCase = char === char.toUpperCase();
+let shiftedChar = String.fromCharCode((char.charCodeAt(0) + shift -
+(isUpperCase ? 65 : 97)) % 26 + (isUpperCase ? 65 : 97));
+result += shiftedChar;
+}
+else
+{
+result += char;
+}
+}
+return result;}
+function encryptText()
+{
+let inputText = document.getElementById('inputText').value;
+let shiftValue = parseInt(document.getElementById('shiftValue').value);
+if (!isNaN(shiftValue))
+{
+let encryptedText = caesarCipher(inputText, shiftValue);
+document.getElementById('result').innerText = `Encrypted Text:
+${encryptedText}`;
+}
+else
+{
+document.getElementById('result').innerText = "Please enter a valid shift
+value.";
+}
+}
+</script>
+</body>
+</html>
+# A python program to illustrate Caesar Cipher Technique
+def encrypt(text, s):
+result = ""
+# traverse text
+for i in range(len(text)):
+char = text[i]
+# Encrypt uppercase characters
+if (char.isupper()):
+result += chr((ord(char) + s - 65) % 26 + 65)
+# Encrypt lowercase characters
+else:
+result += chr((ord(char) + s - 97) % 26 + 97)
+return result# check the above function
+text = "DIGITAL REGENESYS"
+s = 8
+print("Text : " + text)
+print("Shift : " + str(s))
+print("Cipher: " + encrypt(text, s))
+Output:
+Text : DIGITAL REGENESYS
+Shift : 8
+Cipher: LQOQBIT ZMOMVMAGA
+def caesar_cipher(text, shift):
+result = ""
+for char in text:
+if char.isalpha():
+# Determine the case (upper or lower)
+is_upper = char.isupper()
+# Apply the shift and ensure it stays within the alphabet
+shifted_char = chr((ord(char) + shift - ord('A' if is_upper else 'a')) % 26 +
+ord('A' if is_upper else 'a'))
+result += shifted_char
+else:
+result += char
+return result
+# Accept input from the user
+text_to_encrypt = input("Enter the text to encrypt: ")
+shift_value = int(input("Enter the shift value: "))
+# Encrypt the text
+encrypted_text = caesar_cipher(text_to_encrypt, shift_value)
+# Display the results
+print(f"Original text: {text_to_encrypt}")
+print(f"Encrypted text: {encrypted_text}")
+Output:
+Enter the text to encrypt: DIGITAL REGENESYS
+Enter the shift value: 8
+Original text: DIGITAL REGENESYS
+Encrypted text: LQOQBIT ZMOMVMAGA
+NOTE:
+In the Python code for the Caesar Cipher, the ord() function is used to obtain the ASCII
+(American Standard Code for Information Interchange) value of a character. The name
+"ord" stands for "ordinal," and the function returns the integer representing the Unicode
+code point of the given character.In the context of the Caesar Cipher program, ord(char) returns the ASCII value of the
+character char. This value is then used in arithmetic operations to perform the shift
+in the alphabet.
+For example:
+ord('A') returns 65
+ord('a') returns 97
+These values are essential for determining the position of the character in the
+alphabet, and they are used in the calculation of the shifted character in the Caesar
+Cipher algorithm.
